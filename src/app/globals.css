@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@source "../src";
+@import "tw-animate-css";
+
+/* Custom dark mode variant for Tailwind v4 */
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-inter-tight);
+}
+
+@layer base {
+  /* Global Borders */
+  * {
+    @apply border-gray-200 dark:border-gray-800;
+  }
+
+  /* Base HTML & Body Setup */
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* The "Global Canvas" - Soft gray background, dark mode support */
+  body {
+    @apply bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100;
+  }
+
+  /* Custom Text Selection (Emerald Tint) */
+  ::selection {
+    @apply bg-emerald-500/20 text-emerald-900 dark:text-emerald-100;
+  }
+
+  /* Global Focus Ring (Emerald Glow) */
+  :focus-visible {
+    @apply outline-none ring-2 ring-emerald-500/50 ring-offset-2 ring-offset-white dark:ring-offset-gray-950 rounded-lg;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism Utility */
+  .glass {
+    @apply bg-white/80 dark:bg-gray-950/80 backdrop-blur-lg;
+  }
+
+  /* Gradient Text Utility */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-teal-600;
+  }
+
+  /* Hide Scrollbar Utility */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Custom Sleek Scrollbar for the App */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { 
+    @apply bg-gray-300 dark:bg-gray-700 rounded-full; 
+    transition: background 0.2s;
+  }
+  ::-webkit-scrollbar-thumb:hover { 
+    @apply bg-gray-400 dark:bg-gray-600; 
+  }
+}
