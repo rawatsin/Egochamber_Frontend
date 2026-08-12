@@ -3,7 +3,7 @@
 import { useContext, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Flame, Bookmark, ChevronsLeft, ChevronsRight, User, LogIn, LogOut, Plus } from "lucide-react";
+import { Home, Flame, Bookmark, ChevronsLeft, ChevronsRight, User, LogIn, LogOut, Plus, X } from "lucide-react";
 import { AuthContext } from "@/context/AuthContext";
 
 const items = [
@@ -12,7 +12,7 @@ const items = [
   { name: "Saved", icon: Bookmark, href: "/comingsoon" },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ mobileOpen = false, onClose }) {
   const [collapsed, setCollapsed] = useState(false);
   const { user, setUser } = useContext(AuthContext);
   const pathname = usePathname();
@@ -23,21 +23,48 @@ export default function Sidebar() {
   };
 
   return (
-    <aside
-      className={`sticky top-16 flex h-[calc(100vh-4rem)] flex-col border-r border-gray-200/60 dark:border-gray-800/60 bg-white dark:bg-gray-950 transition-all duration-300 ease-in-out ${
-        collapsed ? "w-19" : "w-64"
-      }`}
-    >
-      {/* Top: Collapse Toggle */}
+    <>
+      {onClose && (
+        <button
+          type="button"
+          aria-label="Close navigation"
+          onClick={onClose}
+          className={`fixed inset-0 z-40 bg-gray-950/35 transition-opacity duration-300 lg:hidden ${
+            mobileOpen ? "opacity-100" : "pointer-events-none opacity-0"
+          }`}
+        />
+      )}
+      <aside
+        className={`${
+          onClose
+            ? `fixed inset-y-0 left-0 z-50 flex w-64 flex-col border-r border-gray-200/60 bg-white shadow-2xl transition-transform duration-300 ease-out dark:border-gray-800/60 dark:bg-gray-950 lg:hidden ${
+                mobileOpen ? "translate-x-0" : "-translate-x-full"
+              }`
+            : `sticky top-16 flex h-[calc(100vh-4rem)] flex-col border-r border-gray-200/60 bg-white dark:border-gray-800/60 dark:bg-gray-950 transition-all duration-300 ease-in-out ${
+                collapsed ? "w-19" : "w-64"
+              }`
+        }`}
+      >
+        {/* Top: Collapse Toggle */}
       <div className="flex items-center justify-between p-4 border-b border-gray-100 dark:border-gray-800/50">
         {!collapsed && (
           <span className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider">
             Navigation
           </span>
         )}
+        {onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            className="rounded-lg p-2 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
+            aria-label="Close navigation"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        )}
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className={`p-2 rounded-lg text-gray-400 dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all ${
+          className={`${onClose ? "hidden" : ""} p-2 rounded-lg text-gray-400 dark:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all ${
             collapsed ? "mx-auto" : ""
           }`}
           aria-label={collapsed ? "Expand menu" : "Collapse menu"}
@@ -54,6 +81,7 @@ export default function Sidebar() {
             <Link
               key={item.name}
               href={item.href}
+              onClick={onClose}
               className={`group relative flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                 isActive
                   ? "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400"
@@ -112,6 +140,7 @@ export default function Sidebar() {
         ) : (
           <Link
             href="/auth/login"
+            onClick={onClose}
             className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800/60 hover:text-gray-900 dark:hover:text-white transition-all"
             title={collapsed ? "Log in" : ""}
           >
@@ -120,6 +149,7 @@ export default function Sidebar() {
           </Link>
         )}
       </div>
-    </aside>
+      </aside>
+    </>
   );
 }
