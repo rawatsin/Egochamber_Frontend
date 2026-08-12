@@ -112,7 +112,7 @@ export default function Login() {
       </aside>
 
       {/* Right Side: Form */}
-      <main className="flex items-center justify-center p-6 sm:p-12 bg-white dark:bg-gray-950">
+      <main className="flex items-center justify-center px-4 py-8 sm:p-12 bg-white dark:bg-gray-950">
         <div className="w-full max-w-sm">
           {/* Mobile Logo */}
           <Link

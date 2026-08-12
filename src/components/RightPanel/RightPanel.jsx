@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function RightPanel() {
   return (
-    <aside className="lg:block w-[320px] xl:w-90 px-4 py-6">
+    <aside className="hidden xl:block w-80 shrink-0 px-4 py-6">
       <div className="sticky top-20 space-y-5">
         
         {/* Today's Prompt Card */}

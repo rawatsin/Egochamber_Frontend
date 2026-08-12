@@ -5,7 +5,7 @@ import { Lock, X } from "lucide-react";
 const AuthModal = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md px-4">
-      <div className="relative w-full max-w-sm bg-white dark:bg-gray-900 rounded-2xl border border-gray-200/60 dark:border-gray-800/60 p-8 shadow-2xl shadow-black/20 dark:shadow-black/50">
+      <div className="relative max-h-[calc(100dvh-2rem)] w-full max-w-sm overflow-y-auto rounded-2xl border border-gray-200/60 bg-white p-5 shadow-2xl shadow-black/20 dark:border-gray-800/60 dark:bg-gray-900 sm:p-8">
         
         {/* Close Button */}
         <button

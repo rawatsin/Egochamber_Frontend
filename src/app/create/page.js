@@ -64,7 +64,7 @@ const Create = () => {
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-950 py-12 px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen bg-gray-50 px-3 py-8 dark:bg-gray-950 sm:px-6 sm:py-12 lg:px-8">
       <Toast
         message={toast.message}
         type={toast.type}
@@ -79,9 +79,9 @@ const Create = () => {
       
       <div className="max-w-3xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="mb-8 text-center sm:mb-12">
           <p className="font-mono text-emerald-600 dark:text-emerald-400 text-sm mb-4">// Hello, World</p>
-          <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white tracking-tight">
+          <h1 className="text-4xl font-bold sm:text-6xl text-gray-900 dark:text-white tracking-tight">
             Create <span className="text-emerald-600 dark:text-emerald-400">Post</span>
           </h1>
           <p className="text-gray-500 dark:text-gray-400 mt-4 text-base max-w-xl mx-auto leading-relaxed">
@@ -101,7 +101,7 @@ const Create = () => {
             <span className="ml-4 text-xs font-mono text-gray-600 dark:text-gray-400">~/create-post</span>
           </div>
 
-          <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-6">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6 p-4 sm:p-8">
             {/* Title Field */}
             <div className="space-y-2">
               <label className="block text-sm font-semibold text-gray-800 dark:text-gray-200 font-mono">
