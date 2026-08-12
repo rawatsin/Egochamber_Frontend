@@ -88,7 +88,7 @@ export default function PostCard() {
     <>
       {authModal && <AuthModal onClose={() => setAuthModal(false)} />}
 
-      <div className="space-y-6 max-w-3xl mx-auto">
+      <div className="mx-auto w-full max-w-3xl space-y-5 sm:space-y-6">
         {postdata.map((e) => (
           <article
             key={e.id}
@@ -97,7 +97,7 @@ export default function PostCard() {
             {/* Top Gradient Accent */}
             <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-emerald-400 via-teal-500 to-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               {/* 1. HEADER: Author & Meta (Moved to Top) */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
@@ -136,7 +136,7 @@ export default function PostCard() {
               </Link>
 
               {/* 3. FOOTER: Actions (Horizontal Bar) */}
-              <div className="mt-6 pt-4 border-t border-gray-100 dark:border-gray-800 flex items-center justify-between">
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 border-t border-gray-100 pt-4 dark:border-gray-800 sm:mt-6">
                 {/* Horizontal Voting Pill */}
                 <div className="inline-flex items-center bg-gray-50 dark:bg-gray-800/50 rounded-lg p-1 gap-1 ring-1 ring-gray-200 dark:ring-gray-700">
                   <button

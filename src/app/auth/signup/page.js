@@ -79,7 +79,7 @@ export default function Signup() {
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-teal-500/10 dark:bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="w-full max-w-md relative z-10">
-        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200/60 dark:border-gray-800/60 p-8 shadow-xl shadow-gray-200/40 dark:shadow-black/20">
+        <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-200/60 dark:border-gray-800/60 p-5 sm:p-8 shadow-xl shadow-gray-200/40 dark:shadow-black/20">
           
           {/* Header */}
           <div className="text-center mb-8">

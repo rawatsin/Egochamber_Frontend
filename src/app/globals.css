@@ -17,6 +17,7 @@
 
   /* Base HTML & Body Setup */
   html {
+    overflow-x: hidden;
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -24,6 +25,7 @@
 
   /* The "Global Canvas" - Soft gray background, dark mode support */
   body {
+    min-width: 320px;
     @apply bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100;
   }
 
